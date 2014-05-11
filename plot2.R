@@ -1,0 +1,6 @@
+epcon<-read.csv2("household_power_consumption.txt",na.strings="?",dec=".",colClasses=c("character","character","numeric","numeric","numeric","numeric","numeric","numeric","numeric"))
+epcons<-subset(epcon,Date == "2/2/2007" | Date == "1/2/2007")
+epcons$datetime<-strptime(datetime,"%d/%m/%Y %H:%M:%S")
+png(filename="plot2.png")
+plot(epcons$datetime,epcons$Global_active_power,type="l",xlab="",ylab="Global Active Power(kilowatts)")
+dev.off()
